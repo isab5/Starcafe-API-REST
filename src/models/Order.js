@@ -8,3 +8,5 @@ class Order {
         this.status = status;
     }
 }
+
+module.exports = Order;
