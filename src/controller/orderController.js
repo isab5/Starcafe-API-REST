@@ -33,9 +33,8 @@ const router = {
     },
     deleteOrder: (req, res) => {
         try {
-            const order = req.params.id;
-            list.deleteOrder(order);
-            res.status(200).json({ message: "Pedido cancelado com sucesso!", order});
+            list.deleteOrder(req.params.id);
+            res.status(200).json({ message: "Pedido cancelado com sucesso!"});
         } catch (error) {
             res.status(403).json({ message: "Não foi possível cancelar o pedido.", error});
         }
