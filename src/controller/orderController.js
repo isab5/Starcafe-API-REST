@@ -15,9 +15,31 @@ const router = {
                 throw new Error("Preencha todos os campos!");
             }
             const order = new Order (name, item, status);
-            res.status(200).json({ message: "Pedido feito com sucesso!", order});
+            list.addOrder(order);
+            res.status(201).json({ message: "Pedido feito com sucesso!", order});
         } catch (error) {
             res.status(400).json({ message: "Erro ao adicionar o pedido", error});
         }
+    },
+    getOrderById: (req, res) => {
+        try {
+            const id = req.params.id;
+            res.status(200).json(list.getOrderById(id));
+        } catch (error) {
+            res.status(404).json({
+                message: "Erro ao buscar pedido por id!",
+                error});
+        }
+    },
+    deleteOrder: (req, res) => {
+        try {
+            const order = req.params.id;
+            list.deleteOrder(order);
+            res.status(200).json({ message: "Pedido cancelado com sucesso!", order});
+        } catch (error) {
+            res.status(403).json({ message: "Não foi possível cancelar o pedido.", error});
+        }
     }
-}
+};
+
+module.exports = router;
