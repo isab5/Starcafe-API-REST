@@ -13,20 +13,93 @@
 #### <li> JSON;
 #### <li> Dependências que auxiliam no desenvolvimento: uuid (biblioteca), express, cors e nodemon.
 
-## 👩‍🚀 Postman 
+## 📄 Documentação:
 
-### GET do menu:
-<img src="./img/getAllMovies.png" alt="">
+### 📌 Requisições:
 
-### POST:
-<img src="./img/addMovie.png" alt="">
+### GET /menu
 
-### PUT:
-<img src="./img/updateMovie.png" alt="">
+HTTP 1.1 200 OK
 
-### DELETE:
-<img src="./img/deleteMovie.png" alt="">
+HTTP ERROR 404 Not Found
 
-### GET by ID:
-<img src="./img/getMovieById.png" alt="">
+Host: http://localhost:3000
 
+Content-Type: application/json
+
+Location: /api/menu
+
+X-Powered-By: Express
+
+#### Corpo da Requisição:
+
+    {
+        "name": "Coxinha",
+        "price": "R$8,00",
+        "type": "Salgado Frito"
+    }
+
+### POST /order
+
+HTTP 1.1 201 Created
+
+HTTP ERROR 400 Bad Request
+
+Host: http://localhost:3000
+
+Content-Type: application/json
+
+Location: /api/order
+
+X-Powered-By: Express
+
+#### Corpo da Requisição:
+
+    {
+        "name": "João",
+        "item": "Café e Empada",
+        "status": "Preparando"
+    }
+
+### GET /order
+
+HTTP 1.1 200 OK
+
+HTTP ERROR 404 Not Found
+
+Host: http://localhost:3000
+
+Content-Type: application/json
+
+Location: /api/order/:id
+
+X-Powered-By: Express
+
+#### Corpo da Requisição:
+
+    {
+        "id": "310f68d2-9cbd-4ec3-a524-3e2b8926bf81",
+        "name": "João",
+        "item": "Café e Empada",
+        "status": "Preparando"
+    }
+
+### DELETE /order
+
+HTTP 1.1 200 OK
+
+HTTP ERROR 403 Forbidden
+
+Host: http://localhost:3000
+
+Content-Type: application/json
+
+Location: /api/order/:id
+
+X-Powered-By: Express
+
+#### Corpo da Requisição:
+
+    {
+        "message": "Pedido cancelado com sucesso!"
+    }
